@@ -1,0 +1,53 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= render "govuk_publishing_components/components/heading", {
+      text: "Sign up",
+      heading_level: 1,
+      font_size: "xl",
+      margin_top: 0,
+      margin_bottom: 3,
+    } %>
+
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+      <%= render "govuk_publishing_components/components/input", {
+          label: {
+            text: "Email",
+            },
+            name: "user[email]",
+            type: "email",
+            id: "email",
+            error_message: sanitize(@email_error_message),
+            autocomplete: "email",
+      } %>
+
+      <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Password",
+            },
+            name: "user[password]",
+            type: "password",
+            id: "password",
+            error_message: sanitize(@password_error_message),
+            autocomplete: "new-password",
+          } %>
+
+      <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Password confirmation",
+            },
+            name: "user[password_confirmation]",
+            type: "password",
+            id: "password_confirmation",
+            error_message: sanitize(@password_error_message),
+            autocomplete: "new-password",
+          } %>
+      <%= render "govuk_publishing_components/components/button", {
+        text: "Sign up",
+        margin_bottom: 3,
+      } %>
+<% end %>
+
+<%= render "devise/shared/links" %>
