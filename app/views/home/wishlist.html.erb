@@ -4,6 +4,14 @@
   margin_top: 0,
   margin_bottom: 3,
 } %>
+<%= render "govuk_publishing_components/components/lead_paragraph", {
+  text: "Fill in with your interests, hobbies and any other clues to help your secret santa select the perfect gift.",
+  margin_bottom: 5
+} %>
+<%= render "govuk_publishing_components/components/lead_paragraph", {
+  text: "You might want to list any allergies you have or tell us you're a vegetarian and whether or not you drink alcohol.",
+  margin_bottom: 5
+} %>
 
 <%= form_with do %>
   <% if flash[:alert] %>
@@ -21,7 +29,6 @@
   <% end %>
   <%= render "govuk_publishing_components/components/textarea", {
     margin_bottom: 6,
-    hint: "Fill in with your interests, hobbies or any other clues to help your secret santa select the perfect gift",
     label: {
       text: ""
     },
