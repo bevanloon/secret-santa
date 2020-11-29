@@ -32,7 +32,6 @@
       <a href="<%= wishlist_path %>" class="govuk-link">Set it up</a> to let people know the sort of thing they should buy you.
     </p>
 <% else %>
-  <p>Your wishlist looks like this:</p>
     <%= simple_format(current_user.wishlist) %>
 <% end %>
 </div>
