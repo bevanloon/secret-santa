@@ -1,0 +1,36 @@
+<%= render "govuk_publishing_components/components/heading", {
+  text: "Your wishlist",
+  heading_level: 1,
+  margin_top: 0,
+  margin_bottom: 3,
+} %>
+
+<%= form_with do %>
+  <% if flash[:alert] %>
+    <%= render "govuk_publishing_components/components/error_alert", { message: sanitize(flash[:alert]) } %>
+  <% end %>
+  <% if flash[:old_wishlist] %>
+
+    <%= render "govuk_publishing_components/components/inset_text", {
+      } do %>
+        <div>
+          Just in case you deleted it by mistake, your wishlist used to be:<br>
+          <%= flash[:old_wishlist] %>
+        </div>
+      <% end %>
+  <% end %>
+  <%= render "govuk_publishing_components/components/textarea", {
+    margin_bottom: 6,
+    hint: "Fill in with your interests, hobbies or any other clues to help your secret santa select the perfect gift",
+    label: {
+      text: ""
+    },
+    value: current_user.wishlist,
+    name: "wishlist",
+    id: "wishlist"
+  } %>
+
+  <%= render "govuk_publishing_components/components/button", {
+    text: "Save"
+  } %>
+<% end %>
