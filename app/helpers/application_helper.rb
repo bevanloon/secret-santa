@@ -3,9 +3,12 @@ module ApplicationHelper
     if user_signed_in?
       [
         {
-          text: "Account",
+          text: "Home",
           href: root_path,
-          active: true,
+        },
+        {
+          text: "Wishlist",
+          href: wishlist_path,
         },
         {
           text: "Sign out",
