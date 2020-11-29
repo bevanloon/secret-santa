@@ -1,1 +1,38 @@
-<h1>Secret Santa</h1>
+<% if flash[:notice] %>
+  <%= render "govuk_publishing_components/components/success_alert", { message: flash[:notice] } %>
+<% end %>
+
+<%= render "govuk_publishing_components/components/heading", {
+  text: "You will be buying a secret santa present for",
+  heading_level: 1,
+  margin_top: 0,
+  margin_bottom: 5,
+} %>
+
+<div class="govuk-body govuk-!-margin-bottom-9">
+  <p>The draw hasn't happened yet, check back soon</p>
+</div>
+
+<%= render "govuk_publishing_components/components/heading", {
+  text: "Your wishlist",
+  heading_level: 1,
+  margin_bottom: 5,
+} %>
+
+<%= render "govuk_publishing_components/components/lead_paragraph", {
+  text: "Your wishlist will help your secret santa find something you'll like to receive",
+  margin_bottom: 5
+} %>
+<div class="govuk-body santa-panel">
+<% if current_user.wishlist.blank? %>
+    <p>
+      You have nothing in your wishlist.
+    </p>
+    <p>
+      <a href="<%= wishlist_path %>" class="govuk-link">Set it up</a> to let people know the sort of thing they should buy you.
+    </p>
+<% else %>
+  <p>Your wishlist looks like this:</p>
+    <%= simple_format(current_user.wishlist) %>
+<% end %>
+</div>
