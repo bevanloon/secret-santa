@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_133010) do
+ActiveRecord::Schema.define(version: 2020_11_30_094049) do
+
+  create_table "secret_santas", force: :cascade do |t|
+    t.integer "santa_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_secret_santas_on_recipient_id"
+    t.index ["santa_id"], name: "index_secret_santas_on_santa_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,4 +34,6 @@ ActiveRecord::Schema.define(version: 2020_11_28_133010) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "secret_santas", "users", column: "recipient_id"
+  add_foreign_key "secret_santas", "users", column: "santa_id"
 end
